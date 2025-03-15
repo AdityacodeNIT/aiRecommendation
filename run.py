@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import pandas as pd
+import os
 from app.model import RecommendationModel  
 from app.utils import fetch_all_user_interactions  
 
@@ -36,7 +37,9 @@ def train_model():
 def get_recommendations(user_id):
     recommended_products = model.recommend(user_id)
     return jsonify({"recommended_products": recommended_products})
-   
 
+
+# ✅ Final entry point for both local and Render deployment
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    port = int(os.environ.get("PORT", 5001))  # Render will set PORT automatically; default to 5001 locally
+    app.run(host="0.0.0.0", port=port)  # 0.0.0.0 makes it accessible publicly (Render needs this)
