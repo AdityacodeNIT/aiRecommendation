@@ -29,4 +29,3 @@ def fetch_all_user_interactions():
 
 
 
-
