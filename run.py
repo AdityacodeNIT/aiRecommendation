@@ -42,8 +42,9 @@ def get_recommendations(user_id):
     recommended_products = model.recommend(user_id)
     return jsonify({"recommended_products": recommended_products})
 
+print("Registered routes:", app.url_map)  
 
-# ✅ Final entry point for both local and Render deployment
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))  # Render will set PORT automatically; default to 5001 locally
     app.run(host="0.0.0.0", port=port)  # 0.0.0.0 makes it accessible publicly (Render needs this)
