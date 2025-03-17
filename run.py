@@ -15,6 +15,10 @@ except:
     print("No pre-trained model found, starting fresh.")
 
 # 🔹 Train the model with MongoDB data
+@app.route("/")
+def home():
+    return "API is running!"
+
 @app.route("/train", methods=["POST"])
 def train_model():
     try:
