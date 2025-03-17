@@ -15,7 +15,7 @@ except:
     print("No pre-trained model found, starting fresh.")
 
 # 🔹 Train the model with MongoDB data
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
     return "API is running!"
 
